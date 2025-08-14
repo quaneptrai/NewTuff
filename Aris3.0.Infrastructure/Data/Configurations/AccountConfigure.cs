@@ -17,7 +17,7 @@ namespace Aris3._0.Infrastructure.Data.Configurations
 
             builder.HasOne(a => a.Subscription)          
                    .WithMany(s => s.accounts)            
-                   .HasForeignKey(a => a.SubcriptionId) 
+                   .HasForeignKey(a => a.SubscriptionId) 
                    .OnDelete(DeleteBehavior.Restrict);
             builder.HasMany(a => a.Otps)
                     .WithOne(o => o.Account)

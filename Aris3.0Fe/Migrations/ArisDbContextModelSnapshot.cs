@@ -67,11 +67,8 @@ namespace Aris3._0Fe.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SubcriptionId")
+                    b.Property<int>("SubscriptionId")
                         .HasColumnType("int");
-
-                    b.Property<Guid>("SubscriptionId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -88,6 +85,50 @@ namespace Aris3._0Fe.Migrations
                     b.HasIndex("SubscriptionId");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
+                            AccountStat = true,
+                            Created = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Email = "admin@gmail.com",
+                            LastUpdated = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Password = "admin123",
+                            PersonId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            Role = "Admin",
+                            SubscriptionId = 1,
+                            UserName = "admin",
+                            status = true
+                        },
+                        new
+                        {
+                            Id = new Guid("22222222-2222-2222-2222-222222222222"),
+                            AccountStat = true,
+                            Created = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Email = "user1@gmail.com",
+                            LastUpdated = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Password = "user123",
+                            PersonId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            Role = "User",
+                            SubscriptionId = 2,
+                            UserName = "user1",
+                            status = true
+                        },
+                        new
+                        {
+                            Id = new Guid("33333333-3333-3333-3333-333333333333"),
+                            AccountStat = true,
+                            Created = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Email = "user2@gmail.com",
+                            LastUpdated = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Password = "user123",
+                            PersonId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            Role = "User",
+                            SubscriptionId = 3,
+                            UserName = "user2",
+                            status = true
+                        });
                 });
 
             modelBuilder.Entity("Aris3._0Fe.Models.Actor", b =>
@@ -425,6 +466,56 @@ namespace Aris3._0Fe.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Persons");
+
+                    b.HasData(
+                        new
+                        {
+                            id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
+                            AccountStat = true,
+                            City = "Hanoi",
+                            Country = "Vn",
+                            Created = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Email = "admin@gmail.com",
+                            LastUpdated = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Name = "Admin Person",
+                            PhoneNumber = "0123456789",
+                            Region = "Sea",
+                            Role = "Admin",
+                            State = "HN",
+                            Zipcode = "100000"
+                        },
+                        new
+                        {
+                            id = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
+                            AccountStat = true,
+                            City = "HCMC",
+                            Country = "Vn",
+                            Created = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Email = "user1@gmail.com",
+                            LastUpdated = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Name = "User One",
+                            PhoneNumber = "0987654321",
+                            Region = "Sea",
+                            Role = "User",
+                            State = "HCM",
+                            Zipcode = "700000"
+                        },
+                        new
+                        {
+                            id = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
+                            AccountStat = true,
+                            City = "Danang",
+                            Country = "Vn",
+                            Created = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Email = "user2@gmail.com",
+                            LastUpdated = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Name = "User Two",
+                            PhoneNumber = "0911222333",
+                            Region = "Sea",
+                            Role = "User",
+                            State = "DN",
+                            Zipcode = "550000"
+                        });
                 });
 
             modelBuilder.Entity("Aris3._0Fe.Models.Server", b =>
@@ -452,9 +543,11 @@ namespace Aris3._0Fe.Migrations
 
             modelBuilder.Entity("Aris3._0Fe.Models.Subscription", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -477,6 +570,35 @@ namespace Aris3._0Fe.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Subscriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Description = "Access to standard features and content.",
+                            Name = "Basic Plan",
+                            UpdatedDate = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            type = "Basic"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Description = "Includes HD streaming and exclusive content.",
+                            Name = "Premium Plan",
+                            UpdatedDate = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            type = "Premium"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            Description = "For organizations with extended access and multiple accounts.",
+                            Name = "Enterprise Plan",
+                            UpdatedDate = new DateTime(2025, 8, 14, 5, 52, 37, 799, DateTimeKind.Utc).AddTicks(1164),
+                            type = "Enterprise"
+                        });
                 });
 
             modelBuilder.Entity("Aris3._0Fe.Models.Tmbd", b =>

@@ -1,25 +1,5 @@
 [
   {
-    "ContainingType": "Aris3._0.Controllers.CategoryController",
-    "Method": "GetAllNewUpdateCategory",
-    "RelativePath": "api/Category",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Aris3._0.Controllers.CategoryController",
-    "Method": "UpdateCategoryToTable",
-    "RelativePath": "api/Category",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Aris3._0.Controllers.FilmController",
     "Method": "GetAllNewUpdatedFilmToDb",
     "RelativePath": "api/Film/{pages}",
@@ -91,6 +71,42 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aris3._0.Controllers.TempController",
+    "Method": "UpdateCategoryAndFilm",
+    "RelativePath": "api/Temp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aris3._0.Controllers.TempController",
+    "Method": "UpdateCategoryTempFilm",
+    "RelativePath": "api/Temp/{count}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "count",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aris3._0.Controllers.TempController",
+    "Method": "PutTempToCategory",
+    "RelativePath": "api/Temp/temps-to-category",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

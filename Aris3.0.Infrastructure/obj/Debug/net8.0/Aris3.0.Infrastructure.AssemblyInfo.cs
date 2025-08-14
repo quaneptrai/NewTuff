@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Aris3.0.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19b08ceda332f12af4b545c42cb1c4f386e1d992")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29ff0dfbb637f8c654d0cba740c59eb371b0b2b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Aris3.0.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Aris3.0.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -67,7 +67,7 @@ namespace Aris3._0.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SubcriptionId")
+                    b.Property<int>("SubscriptionId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -82,7 +82,7 @@ namespace Aris3._0.Infrastructure.Migrations
                     b.HasIndex("PersonId")
                         .IsUnique();
 
-                    b.HasIndex("SubcriptionId");
+                    b.HasIndex("SubscriptionId");
 
                     b.ToTable("Accounts");
 
@@ -91,13 +91,13 @@ namespace Aris3._0.Infrastructure.Migrations
                         {
                             Id = new Guid("11111111-1111-1111-1111-111111111111"),
                             AccountStat = true,
-                            Created = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            Created = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Email = "admin@gmail.com",
-                            LastUpdated = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            LastUpdated = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Password = "admin123",
                             PersonId = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"),
                             Role = "Admin",
-                            SubcriptionId = 1,
+                            SubscriptionId = 1,
                             UserName = "admin",
                             status = true
                         },
@@ -105,13 +105,13 @@ namespace Aris3._0.Infrastructure.Migrations
                         {
                             Id = new Guid("22222222-2222-2222-2222-222222222222"),
                             AccountStat = true,
-                            Created = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            Created = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Email = "user1@gmail.com",
-                            LastUpdated = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            LastUpdated = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Password = "user123",
                             PersonId = new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"),
                             Role = "User",
-                            SubcriptionId = 2,
+                            SubscriptionId = 2,
                             UserName = "user1",
                             status = true
                         },
@@ -119,13 +119,13 @@ namespace Aris3._0.Infrastructure.Migrations
                         {
                             Id = new Guid("33333333-3333-3333-3333-333333333333"),
                             AccountStat = true,
-                            Created = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            Created = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Email = "user2@gmail.com",
-                            LastUpdated = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            LastUpdated = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Password = "user123",
                             PersonId = new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"),
                             Role = "User",
-                            SubcriptionId = 3,
+                            SubscriptionId = 3,
                             UserName = "user2",
                             status = true
                         });
@@ -164,6 +164,24 @@ namespace Aris3._0.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("categories");
+                });
+
+            modelBuilder.Entity("Aris3._0.Domain.Entities.CategoryTemp", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryTemps");
                 });
 
             modelBuilder.Entity("Aris3._0.Domain.Entities.Country", b =>
@@ -471,9 +489,9 @@ namespace Aris3._0.Infrastructure.Migrations
                             AccountStat = true,
                             City = "Hanoi",
                             Country = "Vn",
-                            Created = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            Created = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Email = "admin@gmail.com",
-                            LastUpdated = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            LastUpdated = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Name = "Admin Person",
                             PhoneNumber = "0123456789",
                             Region = "Sea",
@@ -487,9 +505,9 @@ namespace Aris3._0.Infrastructure.Migrations
                             AccountStat = true,
                             City = "HCMC",
                             Country = "Vn",
-                            Created = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            Created = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Email = "user1@gmail.com",
-                            LastUpdated = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            LastUpdated = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Name = "User One",
                             PhoneNumber = "0987654321",
                             Region = "Sea",
@@ -503,9 +521,9 @@ namespace Aris3._0.Infrastructure.Migrations
                             AccountStat = true,
                             City = "Danang",
                             Country = "Vn",
-                            Created = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            Created = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Email = "user2@gmail.com",
-                            LastUpdated = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            LastUpdated = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Name = "User Two",
                             PhoneNumber = "0911222333",
                             Region = "Sea",
@@ -572,28 +590,28 @@ namespace Aris3._0.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            CreatedDate = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Description = "Access to standard features and content.",
                             Name = "Basic Plan",
-                            UpdatedDate = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            UpdatedDate = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             type = "Basic"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            CreatedDate = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Description = "Includes HD streaming and exclusive content.",
                             Name = "Premium Plan",
-                            UpdatedDate = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            UpdatedDate = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             type = "Premium"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            CreatedDate = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             Description = "For organizations with extended access and multiple accounts.",
                             Name = "Enterprise Plan",
-                            UpdatedDate = new DateTime(2025, 8, 13, 10, 48, 3, 776, DateTimeKind.Utc).AddTicks(1338),
+                            UpdatedDate = new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884),
                             type = "Enterprise"
                         });
                 });
@@ -634,6 +652,21 @@ namespace Aris3._0.Infrastructure.Migrations
                     b.HasIndex("FilmsId");
 
                     b.ToTable("CategoryFilm", (string)null);
+                });
+
+            modelBuilder.Entity("CategoryTempFilm", b =>
+                {
+                    b.Property<string>("CategoryTempsId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FilmsId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CategoryTempsId", "FilmsId");
+
+                    b.HasIndex("FilmsId");
+
+                    b.ToTable("CategoryTempsFilm", (string)null);
                 });
 
             modelBuilder.Entity("CountryFilm", b =>
@@ -691,7 +724,7 @@ namespace Aris3._0.Infrastructure.Migrations
 
                     b.HasOne("Aris3._0.Domain.Entities.Subscription", "Subscription")
                         .WithMany("accounts")
-                        .HasForeignKey("SubcriptionId")
+                        .HasForeignKey("SubscriptionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -763,6 +796,21 @@ namespace Aris3._0.Infrastructure.Migrations
                     b.HasOne("Aris3._0.Domain.Entities.Category", null)
                         .WithMany()
                         .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Aris3._0.Domain.Entities.Film", null)
+                        .WithMany()
+                        .HasForeignKey("FilmsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CategoryTempFilm", b =>
+                {
+                    b.HasOne("Aris3._0.Domain.Entities.CategoryTemp", null)
+                        .WithMany()
+                        .HasForeignKey("CategoryTempsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -3,6 +3,7 @@ using Aris3._0Fe.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Net;
 using System.Text;
 namespace Aris3._0Fe.Controllers
 {
@@ -46,7 +47,7 @@ namespace Aris3._0Fe.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Search(string searchQuery, Guid id)
+        public async Task<IActionResult> Search(string searchQuery, Guid id,string category)
         {
             if (searchQuery != null && id == null)
             {
@@ -91,6 +92,22 @@ namespace Aris3._0Fe.Controllers
                 }
 
                 return NotFound("Không tìm thấy phim.");
+            }
+            else if (string.IsNullOrWhiteSpace(searchQuery) && id == Guid.Empty && !string.IsNullOrEmpty(category))
+            {
+                // Decode URL-encoded category
+                var decodedCategory = WebUtility.UrlDecode(category).Trim();
+
+                // Optionally ignore case
+                var films = await dbContext.Films
+                                           .Include(f => f.Categories)
+                                           .Where(f => f.Categories.Any(c => c.Name.ToLower() == decodedCategory.ToLower()))
+                                           .ToListAsync();
+
+                var cate = dbContext.categories
+                                    .FirstOrDefault(c => c.Name.ToLower() == decodedCategory.ToLower());
+                ViewBag.Country = cate?.Name;
+                return View(films);
             }
             else
             {

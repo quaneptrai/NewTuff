@@ -63,6 +63,7 @@ namespace Aris3._0Fe.Models
         public ICollection<Category> Categories { get; set; } = new List<Category>();
         public ICollection<Country> Countries { get; set; } = new List<Country>();
         public ICollection<Server> Servers { get; set; } = new List<Server>();
+        public ICollection<CategoryTemp> CategoryTemps { get; set; } = new List<CategoryTemp>();
 
         [JsonProperty("tmdb")]
         public Tmbd Tmdb { get; set; }

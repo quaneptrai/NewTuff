@@ -62,10 +62,9 @@
                         <span style="font-size:1.25rem;color:white">
                             <i class="bi bi-bell"></i>
                         </span>
-                        <a asp-controller="User" asp-action="ForgotPassword" @* class="nav-link btn btn-outline-light btn-user d-flex align-items-center gap-2 dropdown-toggle" style="border-radius:40px;text-decoration:none;" id="navbarDropdown" role="button" *@
-                          @*  data-bs-toggle="dropdown" aria-expanded="false" *@>
+                        <form asp-controller="User" asp-action="UserProfile" method="post" class="user-container">
                             <span style="font-size:1.25rem;"><i class="bi bi-person"></i></span>
-                        </a>
+                        </form> 
                     </div>
                 </div>
             </nav>

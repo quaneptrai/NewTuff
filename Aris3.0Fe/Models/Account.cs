@@ -22,7 +22,7 @@ namespace Aris3._0Fe.Models
         public string Role { get; set; } = "Guest";
         public bool status { get; set; } = true;
         public bool AccountStat { get; set; } = true;
-        public int SubcriptionId { get; set; }
+        public int SubscriptionId { get; set; }
         public Subscription Subscription { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime LastUpdated { get; set; } = DateTime.UtcNow;

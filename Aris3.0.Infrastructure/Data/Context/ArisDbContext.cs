@@ -28,7 +28,7 @@ namespace Aris3._0.Infrastructure.Data.Context
         public DbSet<Person> Persons { get; set; }
         public DbSet<Otp> Otps { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
-
+        public DbSet<CategoryTemp> CategoryTemps { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
@@ -139,7 +139,7 @@ namespace Aris3._0.Infrastructure.Data.Context
                     Created = now,
                     LastUpdated = now,
                     PersonId = personAdminId,
-                    SubcriptionId = 1
+                    SubscriptionId = 1
                 },
                 new Account
                 {
@@ -153,7 +153,7 @@ namespace Aris3._0.Infrastructure.Data.Context
                     Created = now,
                     LastUpdated = now,
                     PersonId = personUser1Id,
-                    SubcriptionId = 2
+                    SubscriptionId = 2
                 },
                 new Account
                 {
@@ -167,7 +167,7 @@ namespace Aris3._0.Infrastructure.Data.Context
                     Created = now,
                     LastUpdated = now,
                     PersonId = personUser2Id,
-                    SubcriptionId = 3
+                    SubscriptionId = 3
                 }
             );
         }

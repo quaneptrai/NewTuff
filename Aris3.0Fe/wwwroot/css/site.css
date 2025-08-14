@@ -226,6 +226,15 @@ button.accept-policy {
     font-size: 1.25rem;
     overflow: visible;
 }
+.user-content {
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+    font-family: roboto;
+    color: #fff; /* ensure text is readable */
+    padding: 1rem; /* spacing for better layout */
+    border-radius: 8px; /* optional: smooth corners */
+    font-size: 1.25rem;
+    overflow: visible;
+}
 .media-title {
     display: flex;
     flex-direction: column;

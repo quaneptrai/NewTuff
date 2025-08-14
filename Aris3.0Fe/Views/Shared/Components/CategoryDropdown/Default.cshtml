@@ -19,7 +19,7 @@
                     @foreach (var category in column)
                     {
                         <li>
-                            <a class="dropdown-item" asp-controller="Category" asp-action="Details" asp-route-id="@category.Id">
+                            <a class="dropdown-item" asp-controller="Film" asp-action="Search" asp-route-category="@category.Name">
                                 @category.Name
                             </a>
                         </li>

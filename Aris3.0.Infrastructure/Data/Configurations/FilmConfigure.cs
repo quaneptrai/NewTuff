@@ -16,6 +16,9 @@ namespace Aris3._0.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<Film> builder)
         {
             builder.HasKey(a => a.Id);
+            builder.HasMany(f => f.CategoryTemps)
+                  .WithMany(c => c.Films)
+                  .UsingEntity(j => j.ToTable("CategoryTempsFilm"));
             builder.HasMany(f => f.Categories)
                   .WithMany(c => c.Films)
                   .UsingEntity(j => j.ToTable("CategoryFilm"));

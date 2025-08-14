@@ -5,28 +5,6 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Category": {
-      "get": {
-        "tags": [
-          "Category"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Category"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Film/slug/{slug}": {
       "get": {
         "tags": [
@@ -119,6 +97,53 @@
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Temp/{count}": {
+      "get": {
+        "tags": [
+          "Temp"
+        ],
+        "parameters": [
+          {
+            "name": "count",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Temp": {
+      "post": {
+        "tags": [
+          "Temp"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Temp/temps-to-category": {
+      "post": {
+        "tags": [
+          "Temp"
         ],
         "responses": {
           "200": {

@@ -10,7 +10,7 @@ namespace Aris3._0Fe.Models
     public class Subscription
     {
         [Key]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; } = string.Empty;
         [Required]
