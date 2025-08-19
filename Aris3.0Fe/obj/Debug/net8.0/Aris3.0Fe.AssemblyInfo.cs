@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Aris3.0Fe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29ff0dfbb637f8c654d0cba740c59eb371b0b2b9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7502433d9c4fe08cbc124b761aa724adda7dd616")]
 [assembly: System.Reflection.AssemblyProductAttribute("Aris3.0Fe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Aris3.0Fe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

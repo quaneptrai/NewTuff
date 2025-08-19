@@ -21,7 +21,7 @@ namespace Aris3._0.Infrastructure.Repositories
         }
         public bool ExistsBySlug(string slug)
         {
-           var result = context.categories.FirstOrDefault(c => c.Slug == slug);
+           var result = context.Categories.FirstOrDefault(c => c.Slug == slug);
             if(result == null)
             {
                 return false;
@@ -34,7 +34,7 @@ namespace Aris3._0.Infrastructure.Repositories
 
         public async Task<Category> GetBySlugAsync(string slug)
         {
-            var category = await context.categories
+            var category = await context.Categories
                                .FirstOrDefaultAsync(c => c.Slug == slug);
 
             if (category == null)

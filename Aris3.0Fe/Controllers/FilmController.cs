@@ -17,31 +17,31 @@ namespace Aris3._0Fe.Controllers
         }
         public IActionResult Index(string id, string posterurl, string name, string original_name, string thumburl)
         {
-            var serverArray = new List<Server>();
+            //var serverArray = new List<Server>();
 
-            if (id != null)
-            {
-                var film = dbContext.Films.FirstOrDefault(f => f.Id == id);
-                if (film != null)
-                {
-                    film.View += 1;
-                    dbContext.SaveChanges();
-                }
+            //if (id != null)
+            //{
+            //    var film = dbContext.Films.FirstOrDefault(f => f.Id == id);
+            //    if (film != null)
+            //    {
+            //        film.View += 1;
+            //        dbContext.SaveChanges();
+            //    }
 
-                serverArray = dbContext.Servers
-                                 .Include(s => s.Film)
-                                     .ThenInclude(f => f.Categories)
-                                 .Include(s => s.Film)
-                                     .ThenInclude(f => f.Actors)
-                                 .Include(s => s.Film)
-                                     .ThenInclude(f => f.Directors)
-                                 .Include(s=>s.Episodes)
-                                 .Where(s => s.FilmId == id)
-                                 .OrderBy(e => e.Id)
-                                 .ToList();
-            }
+            //    serverArray = dbContext.Servers
+            //                     .Include(s => s.Film)
+            //                         .ThenInclude(f => f.Categories)
+            //                     .Include(s => s.Film)
+            //                         .ThenInclude(f => f.Actors)
+            //                     .Include(s => s.Film)
+            //                         .ThenInclude(f => f.Directors)
+            //                     .Include(s=>s.Episodes)
+            //                     .Where(s => s.FilmId == id)
+            //                     .OrderBy(e => e.Id)
+            //                     .ToList();
+            //}
 
-            return View(serverArray);
+            return View(/*serverArray*/);
         }
 
 
@@ -103,7 +103,6 @@ namespace Aris3._0Fe.Controllers
                                            .Include(f => f.Categories)
                                            .Where(f => f.Categories.Any(c => c.Name.ToLower() == decodedCategory.ToLower()))
                                            .ToListAsync();
-
                 var cate = dbContext.categories
                                     .FirstOrDefault(c => c.Name.ToLower() == decodedCategory.ToLower());
                 ViewBag.Country = cate?.Name;

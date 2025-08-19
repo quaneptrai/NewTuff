@@ -18,7 +18,7 @@ html {
   min-height: 100%;
 }
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 a.navbar-brand {
     white-space: normal;
@@ -279,3 +279,51 @@ button.accept-policy {
  .button-group-2 i:hover {
     color: red;
   }
+.film-courseal {
+    display: flex;
+    margin-top: 50px;
+}
+.Film-item {
+    flex: 1 1 0px;
+    transition: transform 300ms ease 100ms;
+}
+.Film-item:after {
+    display: block;
+}
+.film-courseal:hover .box {
+    transform: translateX(-25%);
+}
+.Film-item:hover ~ .box {
+    transform: translateX(25%);
+}
+.film-courseal.Film-item:hover {
+    transform: scale(2);
+}
+.film-courseal .slick-slide {
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+ .film-courseal .slick-slide:hover {
+   transform: scale(1.2); /* zoom in */
+   z-index: 2; /* appear above neighbors */
+}
+.film-inner {
+    position: relative;
+    display: inline-block;
+/*    padding-bottom: 5rem;*/
+}
+.Film-item .film-inner {
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+/* Zoom the entire item */
+.film-courseal .slick-slide:hover {
+    transform: scale(1.2);
+    z-index: 2;
+}
+ /* Move inner content down when zoomed */
+.film-courseal .slick-slide:hover .film-inner {
+  transform: translateY(20px); /* adjust px as needed */
+ }

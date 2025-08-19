@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Aris3._0.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class SomeThing : Migration
+    public partial class Dbinitialized : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,19 +37,6 @@ namespace Aris3._0.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_categories", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CategoryTemps",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Slug = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CategoryTemps", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -316,30 +303,6 @@ namespace Aris3._0.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryTempsFilm",
-                columns: table => new
-                {
-                    CategoryTempsId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FilmsId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CategoryTempsFilm", x => new { x.CategoryTempsId, x.FilmsId });
-                    table.ForeignKey(
-                        name: "FK_CategoryTempsFilm_CategoryTemps_CategoryTempsId",
-                        column: x => x.CategoryTempsId,
-                        principalTable: "CategoryTemps",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CategoryTempsFilm_Films_FilmsId",
-                        column: x => x.FilmsId,
-                        principalTable: "Films",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CountryFilm",
                 columns: table => new
                 {
@@ -436,9 +399,9 @@ namespace Aris3._0.Infrastructure.Migrations
                 columns: new[] { "id", "AccountStat", "City", "Country", "Created", "Email", "LastUpdated", "Name", "PhoneNumber", "Region", "Role", "State", "Zipcode" },
                 values: new object[,]
                 {
-                    { new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), true, "Hanoi", "Vn", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "admin@gmail.com", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "Admin Person", "0123456789", "Sea", "Admin", "HN", "100000" },
-                    { new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), true, "HCMC", "Vn", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "user1@gmail.com", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "User One", "0987654321", "Sea", "User", "HCM", "700000" },
-                    { new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"), true, "Danang", "Vn", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "user2@gmail.com", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "User Two", "0911222333", "Sea", "User", "DN", "550000" }
+                    { new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), true, "Hanoi", "Vn", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "admin@gmail.com", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "Admin Person", "0123456789", "Sea", "Admin", "HN", "100000" },
+                    { new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), true, "HCMC", "Vn", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "user1@gmail.com", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "User One", "0987654321", "Sea", "User", "HCM", "700000" },
+                    { new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"), true, "Danang", "Vn", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "user2@gmail.com", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "User Two", "0911222333", "Sea", "User", "DN", "550000" }
                 });
 
             migrationBuilder.InsertData(
@@ -446,9 +409,9 @@ namespace Aris3._0.Infrastructure.Migrations
                 columns: new[] { "Id", "CreatedDate", "Description", "Name", "UpdatedDate", "type" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "Access to standard features and content.", "Basic Plan", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "Basic" },
-                    { 2, new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "Includes HD streaming and exclusive content.", "Premium Plan", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "Premium" },
-                    { 3, new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "For organizations with extended access and multiple accounts.", "Enterprise Plan", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "Enterprise" }
+                    { 1, new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "Access to standard features and content.", "Basic Plan", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "Basic" },
+                    { 2, new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "Includes HD streaming and exclusive content.", "Premium Plan", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "Premium" },
+                    { 3, new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "For organizations with extended access and multiple accounts.", "Enterprise Plan", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "Enterprise" }
                 });
 
             migrationBuilder.InsertData(
@@ -456,9 +419,9 @@ namespace Aris3._0.Infrastructure.Migrations
                 columns: new[] { "Id", "AccountStat", "Created", "Email", "LastUpdated", "Password", "PersonId", "Role", "SubscriptionId", "UserName", "status" },
                 values: new object[,]
                 {
-                    { new Guid("11111111-1111-1111-1111-111111111111"), true, new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "admin@gmail.com", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "admin123", new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), "Admin", 1, "admin", true },
-                    { new Guid("22222222-2222-2222-2222-222222222222"), true, new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "user1@gmail.com", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "user123", new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), "User", 2, "user1", true },
-                    { new Guid("33333333-3333-3333-3333-333333333333"), true, new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "user2@gmail.com", new DateTime(2025, 8, 14, 9, 8, 20, 668, DateTimeKind.Utc).AddTicks(7884), "user123", new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"), "User", 3, "user2", true }
+                    { new Guid("11111111-1111-1111-1111-111111111111"), true, new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "admin@gmail.com", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "admin123", new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"), "Admin", 1, "admin", true },
+                    { new Guid("22222222-2222-2222-2222-222222222222"), true, new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "user1@gmail.com", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "user123", new Guid("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"), "User", 2, "user1", true },
+                    { new Guid("33333333-3333-3333-3333-333333333333"), true, new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "user2@gmail.com", new DateTime(2025, 8, 18, 6, 57, 48, 892, DateTimeKind.Utc).AddTicks(449), "user123", new Guid("cccccccc-cccc-cccc-cccc-cccccccccccc"), "User", 3, "user2", true }
                 });
 
             migrationBuilder.CreateIndex(
@@ -480,11 +443,6 @@ namespace Aris3._0.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_CategoryFilm_FilmsId",
                 table: "CategoryFilm",
-                column: "FilmsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CategoryTempsFilm_FilmsId",
-                table: "CategoryTempsFilm",
                 column: "FilmsId");
 
             migrationBuilder.CreateIndex(
@@ -538,9 +496,6 @@ namespace Aris3._0.Infrastructure.Migrations
                 name: "CategoryFilm");
 
             migrationBuilder.DropTable(
-                name: "CategoryTempsFilm");
-
-            migrationBuilder.DropTable(
                 name: "CountryFilm");
 
             migrationBuilder.DropTable(
@@ -557,9 +512,6 @@ namespace Aris3._0.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "categories");
-
-            migrationBuilder.DropTable(
-                name: "CategoryTemps");
 
             migrationBuilder.DropTable(
                 name: "Countries");

@@ -4431,11 +4431,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Aris\\Aris3.0\\Aris3.0.Infrastructure\\Aris3.0.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Aris\\NewTuff\\Aris3.0.Infrastructure\\Aris3.0.Infrastructure.csproj",
       "projectName": "Aris3.0.Infrastructure",
-      "projectPath": "C:\\Aris\\Aris3.0\\Aris3.0.Infrastructure\\Aris3.0.Infrastructure.csproj",
+      "projectPath": "C:\\Aris\\NewTuff\\Aris3.0.Infrastructure\\Aris3.0.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\quandm1\\.nuget\\packages\\",
-      "outputPath": "C:\\Aris\\Aris3.0\\Aris3.0.Infrastructure\\obj\\",
+      "outputPath": "C:\\Aris\\NewTuff\\Aris3.0.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4456,11 +4456,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Aris\\Aris3.0\\Aris3.0.Application\\Aris3.0.Application.csproj": {
-              "projectPath": "C:\\Aris\\Aris3.0\\Aris3.0.Application\\Aris3.0.Application.csproj"
+            "C:\\Aris\\NewTuff\\Aris3.0.Application\\Aris3.0.Application.csproj": {
+              "projectPath": "C:\\Aris\\NewTuff\\Aris3.0.Application\\Aris3.0.Application.csproj"
             },
-            "C:\\Aris\\Aris3.0\\Aris3.0.Domain\\Aris3.0.Domain.csproj": {
-              "projectPath": "C:\\Aris\\Aris3.0\\Aris3.0.Domain\\Aris3.0.Domain.csproj"
+            "C:\\Aris\\NewTuff\\Aris3.0.Domain\\Aris3.0.Domain.csproj": {
+              "projectPath": "C:\\Aris\\NewTuff\\Aris3.0.Domain\\Aris3.0.Domain.csproj"
             }
           }
         }

@@ -249,7 +249,7 @@ namespace Aris3._0.Application.Service
         public async Task<int> ImportAllNewUpdatedFilmsAsync(int pages)
         {
             List<string> slugs = new List<string>();
-            for (int i = 0; i < pages; i++) {
+            for (int i = 1; i <= pages; i++) {
                 var pageSlugs = await GetSLugFromApi(i); 
                 slugs.AddRange(pageSlugs);
             }

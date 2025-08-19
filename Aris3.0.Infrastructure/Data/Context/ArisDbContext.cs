@@ -23,12 +23,11 @@ namespace Aris3._0.Infrastructure.Data.Context
         public DbSet<Created> Created { get; set; }
         public DbSet<Modified> Modified { get; set; }
         public DbSet<Film> Films { get; set; }
-        public DbSet<Category> categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Otp> Otps { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
-        public DbSet<CategoryTemp> CategoryTemps { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

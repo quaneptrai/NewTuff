@@ -4378,11 +4378,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Aris\\Aris3.0\\Aris3.0.Domain\\Aris3.0.Domain.csproj",
+      "projectUniqueName": "C:\\Aris\\NewTuff\\Aris3.0.Domain\\Aris3.0.Domain.csproj",
       "projectName": "Aris3.0.Domain",
-      "projectPath": "C:\\Aris\\Aris3.0\\Aris3.0.Domain\\Aris3.0.Domain.csproj",
+      "projectPath": "C:\\Aris\\NewTuff\\Aris3.0.Domain\\Aris3.0.Domain.csproj",
       "packagesPath": "C:\\Users\\quandm1\\.nuget\\packages\\",
-      "outputPath": "C:\\Aris\\Aris3.0\\Aris3.0.Domain\\obj\\",
+      "outputPath": "C:\\Aris\\NewTuff\\Aris3.0.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
