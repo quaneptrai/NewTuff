@@ -1,16 +1,34 @@
-﻿@model List<Country>
-<div class="dropdown-menu p-3 text-light" style="min-width: 200px;">
+﻿@model List<Account>
+
+<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
     <div class="row">
         <div class="col">
-            <ul class="list-unstyled">
-                @foreach (var country in Model)
-                {
-                    <li>
-                        <a class="dropdown-item" asp-controller="Film" asp-action="Search" asp-route-id="@country.Id">
-                            @country.Name
-                        </a>
-                    </li>
-                }
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <a class="dropdown-item d-flex align-items-center text-light" href="#">
+                        <i class="bi bi-pencil me-2"></i>
+                        Manage profiles
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item d-flex align-items-center text-light" asp-controller="User" asp-action="UserProfile">
+                        <i class="bi bi-person-square me-2"></i>
+                        Transfer Profiles
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item d-flex align-items-center text-light" asp-controller="User" asp-action="UserProfile">
+                        <i class="bi bi-person me-2"></i>
+                        Account
+                    </a>
+                </li>
+                <hr />
+                <li class="text-center mt-2">
+                    <a class="dropdown-item text-light fw-bold" asp-controller="User" asp-action="Login"
+                       style="font-size:1.3rem; text-align:center;">
+                        Sign out of Aris
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -19,16 +37,36 @@
     .dropdown-menu {
         background-color: black;
         color: white !important;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        min-width: 250px; 
+        padding: 1rem 5rem 1rem 1rem; 
     }
 
         .dropdown-menu .dropdown-item {
             color: white !important;
+            padding: 0.75rem 1.25rem; 
+            text-decoration: none;
         }
 
             .dropdown-menu .dropdown-item:hover,
             .dropdown-menu .dropdown-item:focus {
-                color: darkgoldenrod !important;
+                color: white !important;
+                text-decoration: underline;
                 background-color: transparent;
+                transform: scale(1.05);
             }
+
+            .dropdown-menu .dropdown-item.signout {
+                color: white !important;
+                text-align: center;
+                font-weight: bold;
+                padding: 0.75rem 1.25rem;
+            }
+
+                .dropdown-menu .dropdown-item.signout:hover {
+                    text-decoration: underline;
+                    background: transparent;
+                    transform: none; /* don’t scale like other items */
+                }
+
 </style>

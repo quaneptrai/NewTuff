@@ -436,46 +436,43 @@
                         <i class="fas fa-list"></i> Danh sách tập
                     </h5>
 
-                    @if (Model != null && Model.Count > 0)
+                    @if (Model != null && Model.Count > 1)
                     {
-                        <div class="accordion" id="serverAccordion">
-                            @for (int i = 0; i < Model.Select(m => m.Server).Distinct().Count(); i++)
-                            {
-                                var server = Model.Select(m => m.Server).Distinct().ToList()[i];
-                                var episodes = Model.Where(e => e.Server.Id == server.Id).ToList();
+                        var servers = Model.GroupBy(e => e.Server.ServerName).ToList();
+                        
+                        @foreach (var serverGroup in servers)
+                        {
+                            var serverId = $"server_{serverGroup.Key.Replace(" ", "_")}
+";
+                            <div class="episode-item mb-2">
+                                <!-- Server Collapse Trigger -->
+                                <div class="d-flex justify-content-between align-items-center"
+                                     data-bs-toggle="collapse"
+                                     data-bs-target="#@serverId"
+                                     aria-expanded="false"
+                                     style="cursor:pointer;">
+                                    <span><i class="fas fa-server me-2"></i>@serverGroup.Key</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
 
-                                <div class="accordion-item bg-dark text-light">
-                                    <h2 class="accordion-header" id="heading@i">
-                                        <button class="accordion-button collapsed bg-dark text-light server-btn"
-                                                type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapse@i"
-                                                aria-expanded="false"
-                                                aria-controls="collapse@i">
-                                            <i class="fas fa-server me-2"></i> @server.ServerName
-                                        </button>
-                                    </h2>
-                                    <div id="collapse@i"
-                                         class="accordion-collapse collapse"
-                                         aria-labelledby="heading@i">
-                                        <div class="accordion-body p-0">
-                                            <ul class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;">
-                                                @foreach (var ep in episodes)
-                                                {
-                                                    <li class="list-group-item bg-dark text-light" style="cursor:pointer;"
-                                                        onclick="selectEpisode('@ep.Id', '@ep.Name', '@ep.LinkEmbed')">
-                                                        @ep.Name
-                                                    </li>
-                                                }
-                                            </ul>
-                                        </div>
+                                <!-- Server Episodes List -->
+                                <div class="collapse mt-2" id="@serverId">
+                                    <div class="list-group">
+                                        @foreach (var episode in serverGroup)
+                                        {
+                                            <button class="list-group-item list-group-item-action bg-dark text-light border-secondary episode-button"
+                                                    onclick="selectEpisode('@episode.Id', '@episode.Name', '@episode.LinkEmbed')"
+                                                    data-episode-id="@episode.Id">
+                                                @episode.Name
+                                                <small class="text-muted float-end">HD</small>
+                                            </button>
+                                        }
                                     </div>
                                 </div>
-                            }
-                        </div>
+                            </div>
+                        }
 
                         <script>
-                            // Episode switcher
                             function debounce(fn, delay) {
                                 let timeout;
                                 return function (...args) {
@@ -488,34 +485,46 @@
                                 const iframe = document.querySelector('#Film-player iframe');
                                 if (iframe) {
                                     iframe.src = url;
-                                } else {
-                                    console.error("iframe not found!");
                                 }
                                 document.getElementById("Episode").textContent = name;
-                            }
-                            const selectEpisode = debounce(handleSelectEpisode, 300);
-
-                            // Custom collapse behavior
-                            document.querySelectorAll(".server-btn").forEach(btn => {
-                                btn.addEventListener("click", function (e) {
-                                    const targetId = this.getAttribute("data-bs-target");
-                                    const target = document.querySelector(targetId);
-
-                                    if (target.classList.contains("show")) {
-                                        // If same server is open → close it
-                                        bootstrap.Collapse.getInstance(target).hide();
-                                    } else {
-                                        // Close all open first
-                                        document.querySelectorAll(".accordion-collapse.show").forEach(open => {
-                                            bootstrap.Collapse.getInstance(open).hide();
-                                        });
-                                        // Then open the clicked one
-                                        new bootstrap.Collapse(target, { toggle: true });
+                                
+                                // Update active state
+                                document.querySelectorAll('.episode-button').forEach(btn => {
+                                    btn.classList.remove('active');
+                                    if (btn.dataset.episodeId === id) {
+                                        btn.classList.add('active');
                                     }
                                 });
-                            });
+                            }
+                            
+                            const selectEpisode = debounce(handleSelectEpisode, 300);
                         </script>
                     }
+                    else
+                    {
+                        <div class="episode-item active">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Tập Full</span>
+                                <small class="text-muted">HD</small>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="episode-item mt-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-film me-2"></i>Trailer</span>
+                            <small class="text-muted">HD</small>
+                        </div>
+                    </div>
+
+                    <div class="episode-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span><i class="fas fa-video me-2"></i>Behind the scenes</span>
+                            <small class="text-muted">HD</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Bootstrap JS -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

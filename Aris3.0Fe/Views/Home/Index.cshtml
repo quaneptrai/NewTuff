@@ -6,10 +6,20 @@
 
 <div class="hero-section d-flex align-items-end">
     <div class="media-title">
-        <label class="film-name" id="film-name" style="font-family:roboto;font-weight:bold"></label>
+        <div class="film-type d-flex flex-row align-items-center gap-3">
+            <h2 class="split-text">A</h2>
+            <h4 id="logo-film-style"style="color:darkgray">Aris Series</h4>
+        </div>
+        <h1 class="film-name" id="film-name" style="font-family:roboto;font-weight:bolder;font-size:50px"></h1>
+        <div class="ranking-infor">
+            <div class="film-ranking" style="color:black">
+                <div class="rank" style="font-size:12px;font-weight:bolder">Top</div>
+                <div class="rank-number" style="font-weight:bolder">1</div>
+            </div>
+            <h4>#1 Tv Shows Today</h4>
+        </div>
         <div class="film-content" id="film-content" style="font-family:roboto;font-weight:bold"></div>
-
-        <div class="button-group d-flex flex-row align-items-center gap-3 mt-5">
+        <div class="button-group d-flex flex-row align-items-center gap-2">
             <a id="play-button" class="btn btn-play">
                 <i class="bi bi-play-fill"></i>
                 <h5 style="font-family:roboto;font-weight:800">Watch</h5>
@@ -45,6 +55,14 @@
         document.getElementById('film-content').textContent = content;
 
         document.getElementById('play-button').href = '@Url.Action("Index", "Film")?id=' + encodeURIComponent(films[i].id);
+        const logo = document.getElementById('logo-film-style');
+        if (films[i].type && films[i].type.toLowerCase() === "movie") {
+            logo.textContent = "Aris Movies";
+        } else if (films[i].type && films[i].type.toLowerCase() === "series") {
+            logo.textContent = "Aris Series";
+        } else {
+            logo.textContent = "Aris Cartoon";
+        }
     }
 
     showFilm(index);

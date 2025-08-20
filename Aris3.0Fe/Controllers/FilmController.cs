@@ -17,31 +17,34 @@ namespace Aris3._0Fe.Controllers
         }
         public IActionResult Index(string id, string posterurl, string name, string original_name, string thumburl)
         {
-            //var serverArray = new List<Server>();
+            var episodeArray= new List<Episode>();
 
-            //if (id != null)
-            //{
-            //    var film = dbContext.Films.FirstOrDefault(f => f.Id == id);
-            //    if (film != null)
-            //    {
-            //        film.View += 1;
-            //        dbContext.SaveChanges();
-            //    }
+            if (id != null)
+            {
+                var film = dbContext.Films.FirstOrDefault(f => f.Id == id);
+                if (film != null)
+                {
+                    film.View += 1;
+                    dbContext.SaveChanges();
+                }
 
-            //    serverArray = dbContext.Servers
-            //                     .Include(s => s.Film)
-            //                         .ThenInclude(f => f.Categories)
-            //                     .Include(s => s.Film)
-            //                         .ThenInclude(f => f.Actors)
-            //                     .Include(s => s.Film)
-            //                         .ThenInclude(f => f.Directors)
-            //                     .Include(s=>s.Episodes)
-            //                     .Where(s => s.FilmId == id)
-            //                     .OrderBy(e => e.Id)
-            //                     .ToList();
-            //}
+                episodeArray = dbContext.Episodes.Where(e=>e.Server.Film.Id == id)
+                                 .Include(s => s.Server)
+                                     .ThenInclude(s => s.Film)
+                                      .ThenInclude(f=>f.Countries)
+                                 .Include(s => s.Server)
+                                     .ThenInclude(s => s.Film)
+                                      .ThenInclude(f => f.Categories)
+                                .Include(s => s.Server)
+                                     .ThenInclude(s => s.Film)
+                                      .ThenInclude(f => f.Countries)
+                                .Include(s => s.Server)
+                                     .ThenInclude(s => s.Film)
+                                      .ThenInclude(f => f.Actors)
+                                 .ToList();
+            }
 
-            return View(/*serverArray*/);
+            return View(episodeArray);
         }
 
 
@@ -49,7 +52,7 @@ namespace Aris3._0Fe.Controllers
         [HttpGet]
         public async Task<IActionResult> Search(string searchQuery, Guid id,string category)
         {
-            if (searchQuery != null && id == null)
+            if (searchQuery != null && id == Guid.Empty)
             {
                 string RemoveDiacritics(string text)
                 {
@@ -95,10 +98,8 @@ namespace Aris3._0Fe.Controllers
             }
             else if (string.IsNullOrWhiteSpace(searchQuery) && id == Guid.Empty && !string.IsNullOrEmpty(category))
             {
-                // Decode URL-encoded category
                 var decodedCategory = WebUtility.UrlDecode(category).Trim();
 
-                // Optionally ignore case
                 var films = await dbContext.Films
                                            .Include(f => f.Categories)
                                            .Where(f => f.Categories.Any(c => c.Name.ToLower() == decodedCategory.ToLower()))
